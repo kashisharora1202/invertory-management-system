@@ -6,6 +6,10 @@ const productdata = mongoose.Schema({
         type:String,
         required:true
     },
+    image:{
+        type:String,
+        required:true
+    },
     price:{
         type:Number,
         min:[1]
@@ -14,8 +18,12 @@ const productdata = mongoose.Schema({
         type:String,   
     },
     stock:{
-        type:String,
+        type:Number,
         default:0
+    },
+    userid:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"user"
     }
 })
 
