@@ -4,7 +4,7 @@ const productSchema = require("../schema/product_schema")
 async function product(req,res) {
     try {
 
-        const {product,image,price,catagory} = req.body
+        const {product,image,price,catagory,stock} = req.body
 
         console.log(req.user)
 
@@ -17,9 +17,9 @@ async function product(req,res) {
        
        
        if(find){
-           const stock = find.stock
-           console.log("stock",stock)
-           const updatestock = find.stock + 1
+           const prevStock = find.stock
+           console.log("stock",prevStock)
+           const updatestock = find.stock + stock
            console.log("updatestock",updatestock)
 
            const searchProduct = await productSchema.updateOne(
@@ -28,12 +28,13 @@ async function product(req,res) {
                 stock:updatestock,
                 product:product,
                 price:price,
-                image:image
+                image:image,
+                stock:updatestock
                 }}
            )
            
-           if(stock<=5){
-                return  res.status(201).json({message:"update This product Stock is less then 5"})
+           if(updatestock<=5){
+                return res.status(201).json({message:"update This product Stock is less then 5"})
             }
             else{
                 return res.status(201).json({message:"product submit successfully find"})
@@ -42,17 +43,18 @@ async function product(req,res) {
 
         if(!find){
 
-            
+            const updatestock = stock
+
             const addproduct = await productSchema.create({
                 product:product,
                 image:image,
                 price:price,
                 catagory:catagory,
-                stock:1,
+                stock:updatestock,
                 userid:req.user.id,    
             })
             
-            if(addproduct.stock<=5){
+            if(updatestock<=5){
                 return  res.status(201).json({message:"new This product Stock is less then 5",addproduct})
             }
         }

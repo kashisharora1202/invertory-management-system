@@ -19,7 +19,7 @@ const productdata = mongoose.Schema({
     },
     stock:{
         type:Number,
-        default:0
+        default:1
     },
     userid:{
         type:mongoose.Schema.Types.ObjectId,
