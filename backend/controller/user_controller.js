@@ -23,7 +23,7 @@ async function createuser_controller(req,res){
 
     } catch (error) {
         console.log(error)
-        res.status(500).json({message:"user created failed"})
+        res.status(500).json({message:"something went wrong"})
     }
 }
 
