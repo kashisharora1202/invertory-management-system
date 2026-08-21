@@ -6,19 +6,24 @@ const cookieparser = require("cookie-parser")
 const login = require("./routes/login") 
 const addProduct = require("./routes/add_product")
 const show_all_products = require("./routes/show_all_products")
+const finduser = require("./routes/finduser")
 const cors = require("cors")
 
 const app = express()
 connect()
+app.use(cors({
+    origin:process.env.FRONTEND_URL,
+    credentials:true
+}))
 app.use(express.json())
 app.use(cookieparser())
-app.use(cors())
 
 
 app.use("/create", createuser)
 app.use("/user",login)
 app.use("/add",addProduct)
 app.use("/show",show_all_products)
+app.use("/find",finduser)
 
 const PORT = process.env.PORT
 
