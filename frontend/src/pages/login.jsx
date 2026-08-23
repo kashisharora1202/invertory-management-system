@@ -24,7 +24,7 @@ const Login = () => {
     });
 
       
-      navigate("/")
+      navigate("/dashboard")
 
     } catch (error) {
       alert(error.response.data.message);
