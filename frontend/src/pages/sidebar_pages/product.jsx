@@ -77,10 +77,7 @@ const product = () => {
                   {item.stock > 0 ? "In Stock" : "Out of Stock"}
                 </span>
 
-                {/* Category */}
-                <span className="absolute right-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-medium capitalize text-slate-600 shadow-sm backdrop-blur">
-                  {item.catagory}
-                </span>
+               
               </div>
 
               {/* Details */}

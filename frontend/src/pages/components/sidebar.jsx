@@ -1,11 +1,32 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios"
+import { useNavigate} from "react-router-dom";
+
+
 
 const Sidebar = () => {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate()
+
+  async function logout() {
+    try {
+     const uu =  await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/logout`,{
+        withCredentials:true
+      })
+
+      alert(uu.data.message)
+      navigate("/")
+    
+
+    } catch (error) {
+      alert(error.response.data.message)
+    }
+  }
 
   return (
     <>
+    
       {/* Mobile Menu Button */}
       <button
         onClick={() => setOpen(true)}
@@ -112,10 +133,10 @@ const Sidebar = () => {
         {/* Logout */}
         <div className="border-t border-slate-100 pt-4">
 
-          <Link
-            to="logout"
+          <Link 
             onClick={() => {
-              setOpen(false)
+              setOpen(false),
+              logout()
               
             }}
             className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-red-500 hover:bg-red-100"
