@@ -8,6 +8,7 @@ const addProduct = require("./routes/add_product")
 const show_all_products = require("./routes/show_all_products")
 const finduser = require("./routes/finduser")
 const cors = require("cors")
+const logout = require("./routes/logout")
 
 const app = express()
 connect()
@@ -24,6 +25,7 @@ app.use("/user",login)
 app.use("/add",addProduct)
 app.use("/show",show_all_products)
 app.use("/find",finduser)
+app.use("/user",logout)
 
 const PORT = process.env.PORT
 
