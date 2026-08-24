@@ -83,7 +83,7 @@ useEffect(() => {
             </p>
 
             <p className="mt-2 text-3xl font-bold text-slate-800">
-              {allproduct}
+              {allproduct?allproduct:"0"}
             </p>
 
             <p className="mt-2 text-xs text-slate-400">
@@ -110,7 +110,7 @@ useEffect(() => {
             </p>
 
             <p className="mt-2 text-3xl font-bold text-slate-800">
-              {stock}
+              {stock?stock:"0"}
             </p>
 
             <p className="mt-2 text-xs text-slate-400">
@@ -137,10 +137,10 @@ useEffect(() => {
             </p>
 
             <p className="mt-2 text-3xl font-bold text-slate-800">
-              {lowstock}
+              {lowstock?lowstock:"0"}
             </p>
 
-            <p className="mt-2 text-xs text-amber-500">
+            <p className="mt-2 text-xs text-red-500">
               Needs attention
             </p>
           </div>

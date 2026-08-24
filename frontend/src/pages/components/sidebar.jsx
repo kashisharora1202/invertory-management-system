@@ -114,7 +114,10 @@ const Sidebar = () => {
 
           <Link
             to="logout"
-            onClick={() => setOpen(false)}
+            onClick={() => {
+              setOpen(false)
+              
+            }}
             className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-red-500 hover:bg-red-100"
           >
             🚪
