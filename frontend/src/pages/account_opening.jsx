@@ -8,6 +8,7 @@ const account_opening = () => {
      const [email, setemail] = useState("");
      const [password, setpassword] = useState("");
      const [loading, setloading] = useState(false);
+     const [phoneno, setphoneno] = useState("");
 
      async function account_opening(e){
         try {
@@ -17,7 +18,8 @@ const account_opening = () => {
             const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/create/user`,{
                 username,
                 password,
-                email
+                email,
+                phoneno
             })
 
             alert(res.data.message)
@@ -30,6 +32,7 @@ const account_opening = () => {
             setusername("")
             setemail("")
             setpassword("")
+            setphoneno("")
         }
      }
 
@@ -174,6 +177,30 @@ const account_opening = () => {
               </div>
             </div>
 
+                  {/* phone number  */}
+            <div>
+              <label className="block mb-2 text-sm font-medium text-slate-700">
+                Contact Number
+              </label>
+
+              <div className="relative">
+
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">
+                  📱
+                </span>
+
+                <input
+                  type="text"
+                  onChange={(e) => {
+                    setphoneno(e.target.value);
+                  }}
+                  placeholder="Contact Number must have 10 digits"
+                  value={phoneno}
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50 py-3.5 pl-11 pr-4 text-sm outline-none transition focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100"
+                />
+
+              </div>
+            </div>
 
             {/* Submit */}
             <button

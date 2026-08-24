@@ -8,7 +8,7 @@ import Product from './pages/sidebar_pages/product'
 import Catagories from './pages/sidebar_pages/catagories'
 import Order from './pages/sidebar_pages/order'
 import Settings from './pages/sidebar_pages/settings'
-import Logout from './pages/sidebar_pages/logout'
+
 
 const App = () => {
   return (
@@ -24,7 +24,7 @@ const App = () => {
                 <Route path='catagories' element={<Catagories />}/>
                 <Route path='order' element={<Order />}/>
                 <Route path='settings' element={<Settings />}/>
-                <Route path='logout' element={<Logout />}/>
+                
                 
               </Route>
       </Routes>
