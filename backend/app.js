@@ -9,6 +9,7 @@ const show_all_products = require("./routes/show_all_products")
 const finduser = require("./routes/finduser")
 const cors = require("cors")
 const logout = require("./routes/logout")
+const user_update_delete = require("./routes/user_update_delete")
 
 const app = express()
 connect()
@@ -26,6 +27,7 @@ app.use("/add",addProduct)
 app.use("/show",show_all_products)
 app.use("/find",finduser)
 app.use("/user",logout)
+app.use("/user",user_update_delete)
 
 const PORT = process.env.PORT
 

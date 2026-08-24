@@ -13,6 +13,13 @@ const userdata = mongoose.Schema({
     email:{
         type:String,
         required:true
+    },
+    phoneno:{
+        type:String,
+        required:true,
+        minlength:[10,"Contact number can be only 10 digits"],
+        maxlength:[10,"Contact number can be only 10 digits"],
+        
     }
 })
 
