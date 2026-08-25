@@ -8,6 +8,7 @@ import Product from './pages/sidebar_pages/product'
 import Catagories from './pages/sidebar_pages/catagories'
 import Order from './pages/sidebar_pages/order'
 import Settings from './pages/sidebar_pages/settings'
+import Add_product from './pages/sidebar_pages/add_product'
 
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
                 <Route path='' element={<Overview />}/>
                 <Route path='overview' element={<Overview />}/>
                 <Route path='product' element={<Product />}/>
+                <Route path="product/add" element={<Add_product />}/>    
                 <Route path='catagories' element={<Catagories />}/>
                 <Route path='order' element={<Order />}/>
                 <Route path='settings' element={<Settings />}/>

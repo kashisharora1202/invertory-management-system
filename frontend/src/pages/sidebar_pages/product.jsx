@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Loading_circle from "../components/loading_circle"
+import { Link } from "react-router-dom";
 
 const product = () => {
   const [array, setarray] = useState([]);
@@ -29,7 +30,7 @@ const product = () => {
   }, []);
 
   return (
-  <div className="w-full min-h-screen bg-slate-50 p-4 sm:p-6 lg:p-8">
+  <div className="w-full  bg-slate-50 p-4 sm:p-6 lg:p-8">
     
     {/* Header */}
     <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -42,9 +43,10 @@ const product = () => {
         </p>
       </div>
 
-      <button className="w-full rounded-xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 hover:shadow-md active:scale-95 sm:w-auto">
+      <Link to="add"
+       className="w-full rounded-xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 hover:shadow-md active:scale-95 sm:w-auto">
         + Add Product
-      </button>
+      </Link>
     </div>
 
     {/* Products */}
@@ -111,7 +113,8 @@ const product = () => {
                 </div>
 
                 {/* View Button */}
-                <button className="mt-5 w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-blue-600 hover:bg-blue-600 hover:text-white active:scale-[0.98]">
+                <button
+                 className="mt-5 w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-blue-600 hover:bg-blue-600 hover:text-white active:scale-[0.98]">
                   View Product
                 </button>
               </div>
