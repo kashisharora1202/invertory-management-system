@@ -15,7 +15,7 @@ const navbar = () => {
           withCredentials:true
         })
 
-        setusername(find_username.data.username)
+        setusername(find_username.data.user.username)
        
         
       } catch (error) {

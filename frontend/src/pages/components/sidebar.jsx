@@ -7,9 +7,11 @@ import { useNavigate} from "react-router-dom";
 
 const Sidebar = () => {
   const [open, setOpen] = useState(false);
+  const [logout, setlogout] = useState(false);
+
   const navigate = useNavigate()
 
-  async function logout() {
+  async function logout_fnc() {
     try {
      const uu =  await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/logout`,{
         withCredentials:true
@@ -85,6 +87,7 @@ const Sidebar = () => {
 
           <div className="space-y-1">
 
+            
             <Link
               to="overview"
               onClick={() => setOpen(false)}
@@ -93,24 +96,24 @@ const Sidebar = () => {
               📊
               Overview
             </Link>
-
             <Link
-              to="product"
-              onClick={() => setOpen(false)}
-              className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600  hover:bg-blue-100"
-            >
-              📦
-              Products
-            </Link>
-
-            <Link
-              to="catagories"
+              to="products"
               onClick={() => setOpen(false)}
               className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600  hover:bg-blue-100"
             >
               🏷️
-              Categories
+              Products
             </Link>
+
+            <Link
+              to="yourproduct"
+              onClick={() => setOpen(false)}
+              className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600  hover:bg-blue-100"
+            >
+              📦
+              Your Products
+            </Link>
+
 
             <Link
               to="order"
@@ -135,8 +138,8 @@ const Sidebar = () => {
 
           <Link 
             onClick={() => {
-              setOpen(false),
-              logout()
+              setlogout(true)
+              
               
             }}
             className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-red-500 hover:bg-red-100"
@@ -144,6 +147,26 @@ const Sidebar = () => {
             🚪
             Logout
           </Link>
+
+          {logout&&(
+            <div className="border-t border-slate-100  flex items-center gap-3">
+              <button onClick={()=>{
+                logout_fnc(),
+                setOpen(false)
+              }}
+              className=" rounded-xl bg-red-100 px-5 py-2 text-sm font-semibold text-slate-700">
+                Conform
+                </button>
+
+              <button onClick={()=>{
+                setlogout(false),
+                setOpen(false)
+              }}
+              className="rounded-xl bg-slate-200 px-5 py-2 text-sm font-semibold text-slate-700">
+                Cencel
+                </button>
+            </div>
+          )}
 
         </div>
           </div>

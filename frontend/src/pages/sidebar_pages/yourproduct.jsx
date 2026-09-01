@@ -114,7 +114,7 @@ const product = () => {
 
                 {/* View Button */}
                 <button
-                 className="mt-5 w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-blue-600 hover:bg-blue-600 hover:text-white active:scale-[0.98]">
+                 className="mt-5 w-full rounded-xl border border-blue-600 bg-blue-600 text-white py-2.5 text-sm font-semibold text-slate-700 transition hover:border-blue-700 hover:bg-blue-700 hover:text-white active:scale-[0.98]">
                   View Product
                 </button>
               </div>

@@ -1,5 +1,4 @@
 import axios from 'axios';
-import React from 'react'
 import { useState , useEffect } from 'react'
 
 const overview = () => {
@@ -23,7 +22,7 @@ useEffect(() => {
         withCredentials:true
       })
 
-      setusername(find_username.data.username)
+      setusername(find_username.data.user.username)
 
       // allproducts
       const product_data = user.data.products

@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 const Login = () => {
@@ -171,6 +172,9 @@ const Login = () => {
               <span className="text-xs text-slate-400">
                 INVENTORY SYSTEM
               </span>
+
+              <Link to="/registration" className="font-semibold text-blue-700 transition hover:text-slate-700 ">Create an account</Link>
+             
 
               <div className="h-px flex-1 bg-slate-200"></div>
             </div>

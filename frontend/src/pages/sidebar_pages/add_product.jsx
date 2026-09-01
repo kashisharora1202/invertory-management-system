@@ -14,22 +14,27 @@ const add_product = () => {
    try {
     e.preventDefault()
 
-    const newproduct = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/add/product`,{
-      product,
-      image,
-      stock,
-      price,
-      catagory
-    },
+    const formdata = new FormData();
+
+    formdata.append("product",product)
+    formdata.append("price",price)
+    formdata.append("catagory",catagory)
+    formdata.append("stock",stock)
+    formdata.append("image",image)
+
+    console.log(formdata)
+
+    const newproduct = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/add/product`,
+      formdata,
   {
     withCredentials:true
   })
 
- 
-    alert(newproduct.data.message)
+    alert(newproduct.data.message || "product succussful")
 
    } catch (error) {
-     alert(error.response.data.message)
+     alert(error.response.data.message || error.response.files.message || "something went wrong")
+     console.log(error.response.data.error || error.response.files.message)
    }
    finally{
     setproduct("")
@@ -39,11 +44,6 @@ const add_product = () => {
     setstock("")
    }
  }
- 
- 
- 
- 
- 
  
  
  return (
@@ -211,6 +211,7 @@ const add_product = () => {
             <input
               id="image"
               type="file"
+              name='image'
               accept="image/*"
               className="hidden"
               onChange={(e) => setimage(e.target.files[0])}

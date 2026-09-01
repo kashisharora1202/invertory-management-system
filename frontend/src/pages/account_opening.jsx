@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React from 'react'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+
 
 const account_opening = () => {
 
@@ -9,6 +11,7 @@ const account_opening = () => {
      const [password, setpassword] = useState("");
      const [loading, setloading] = useState(false);
      const [phoneno, setphoneno] = useState("");
+     const navigate = useNavigate()
 
      async function account_opening(e){
         try {
@@ -20,9 +23,14 @@ const account_opening = () => {
                 password,
                 email,
                 phoneno
-            })
+            },
+          {
+            withCredentials:true
+          })
 
             alert(res.data.message)
+
+            navigate("/dashboard")
             
         } catch (error) {
             alert(error.response.data.message || "something went wrong")
