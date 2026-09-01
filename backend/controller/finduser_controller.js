@@ -8,7 +8,7 @@ async function finduser(req,res) {
             _id : req.user.id
         })
 
-        return res.status(201).json({username:user.username})
+        return res.status(201).json({user:user})
         
     } catch (error) {
        return res.status(404).json({message:"user not found",error:error.message})
