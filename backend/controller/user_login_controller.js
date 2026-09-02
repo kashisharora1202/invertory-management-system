@@ -32,7 +32,8 @@ async function login(req,res) {
 
          res.cookie("token",token ,{
             httpOnly: true,
-            secure: true
+            secure: true,
+            sameSite: "none"
          })
 
          return res.status(200).json({message:"login successfully",user:user})
