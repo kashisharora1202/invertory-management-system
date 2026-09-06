@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 const allproduct = () => {
   const [array, setarray] = useState([]);
   const [loading, setloading] = useState(false);
+  
+
 
   useEffect(() => {
     async function allproducts() {
@@ -97,10 +99,13 @@ const allproduct = () => {
                 </div>
 
                 {/* View Button */}
-                <button
-                 className="mt-5 w-full rounded-xl border border-slate-200 bg-blue-600 text-white py-2.5 text-sm font-semibold  transition  hover:border-blue-700 hover:bg-blue-700 hover:text-white active:scale-[0.98]">
+                <Link to="order"
+                state={{product:item}}
+                 className="mt-5 w-full block text-center rounded-xl border border-slate-200 bg-blue-600 text-white py-2.5 text-sm font-semibold  transition  hover:border-blue-700 hover:bg-blue-700 hover:text-white active:scale-[0.98]">
                   place order
-                </button>
+                </Link>
+
+
               </div>
             </div>
           );

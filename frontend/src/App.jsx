@@ -6,9 +6,11 @@ import Dashboard from './pages/dashboard'
 import Overview from './pages/sidebar_pages/overview'
 import Products from './pages/sidebar_pages/products'
 import YourProduct from './pages/sidebar_pages/yourproduct'
-import Order from './pages/sidebar_pages/order'
+import Myorder from './pages/sidebar_pages/myorder'
+import Coustmororders from './pages/sidebar_pages/coustmor'
 import Settings from './pages/sidebar_pages/settings'
 import Add_product from './pages/sidebar_pages/add_product'
+import Place_order from './pages/sidebar_pages/place_order'
 
 
 const App = () => {
@@ -24,7 +26,9 @@ const App = () => {
                 <Route path='products' element={<Products />}/>
                 <Route path="yourproduct/add" element={<Add_product />}/>    
                 <Route path='yourproduct' element={<YourProduct />}/>
-                <Route path='order' element={<Order />}/>
+                <Route path='myorders' element={<Myorder />}/>
+                <Route path='coustmororders' element={<Coustmororders />}/>
+                <Route path='products/order' element={<Place_order />}/>
                 <Route path='settings' element={<Settings />}/>
                 
                 

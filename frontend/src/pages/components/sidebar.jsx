@@ -116,12 +116,21 @@ const Sidebar = () => {
 
 
             <Link
-              to="order"
+              to="myorders"
               onClick={() => setOpen(false)}
               className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 hover:bg-blue-100"
             >
               📋
-              Orders
+             Your Orders
+            </Link>
+
+            <Link
+              to="coustmororders"
+              onClick={() => setOpen(false)}
+              className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 hover:bg-blue-100"
+            >
+              📋
+             Customer Orders
             </Link>
 
             <Link
