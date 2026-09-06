@@ -62,7 +62,7 @@ async function product(req,res) {
                 return res.status(201).json({message:" This product Stock is less then 5"})
             }
             else{
-                return res.status(201).json({message:"product submit successfully find"})
+                return res.status(201).json({message:"product submit successfully "})
             }
         }
 
@@ -81,6 +81,9 @@ async function product(req,res) {
             
             if(updatestock<=5){
                 return  res.status(201).json({message:" This product Stock is less then 5",addproduct})
+            }
+            else{
+                return res.status(201).json({message:"product submit successfully "})
             }
         }
     }

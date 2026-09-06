@@ -11,6 +11,8 @@ const cors = require("cors")
 const logout = require("./routes/logout")
 const user_update_delete = require("./routes/user_update_delete")
 const allproducts = require("./routes/all_products")
+const order = require("./routes/order")
+const showorder = require("./routes/show_orders")
 
 const app = express()
 connect()
@@ -33,6 +35,8 @@ app.use("/find",finduser)
 app.use("/user",logout)
 app.use("/user",user_update_delete)
 app.use("/all",allproducts)
+app.use("/user",order)
+app.use("/show",showorder)
 
 const PORT = process.env.PORT
 
