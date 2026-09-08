@@ -2,6 +2,7 @@ const express = require("express")
 const productSchema = require("../schema/product_schema")
 const cloudinary = require("../config/cloudinary")
 
+
 async function product(req,res) {
     try {
 
