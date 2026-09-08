@@ -19,8 +19,12 @@ const place_order = () => {
     try {
       e.preventDefault();
       setloading(true);
+      if(!address.trim() || !city.trim() || !pincode.trim()){
+        alert("Please fill all the information first")
+        return
+      }
 
-      console.log("working");
+     
 
       const userorder = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/user/order`,
@@ -42,9 +46,53 @@ const place_order = () => {
         },
       );
 
-      console.log(userorder.data);
 
-      alert(userorder.data.message);
+      const options = {
+        key : import.meta.env.VITE_RAZORPAY_API_KEY,
+        amount : userorder.data.payorder.amount,
+        currency : "INR",
+        name : "kashish arora",
+        discription : " testing product payments",
+        order_id : userorder.data.payorder.id,
+
+        handler : async function(respponce){
+          console.log("responce",respponce)
+            try {
+              
+             await axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/orderverification`,{
+                
+                razorpay_payment_id : respponce.razorpay_payment_id,
+                razorpay_order_id: respponce.razorpay_order_id,
+                razorpay_signature : respponce.razorpay_signature,
+                product: product.product,
+                image: product.image,
+                price: product.price * quantity,
+                category: product.catagory,
+                coustmorname: user.username,
+                phoneno: user.phoneno,
+                address,
+                quantity,
+                city,
+                pincode,
+                selerid: product.userid,
+              },{
+                withCredentials:true
+              })
+              
+            } catch (eror) {
+              console.log(error.message)
+            }
+        }
+      };
+
+      const rzp = new window.Razorpay(options);
+      rzp.open()
+
+     
+
+      
+
+      // alert(userorder.data.message);
     } catch (error) {
       console.log(error.message);
       console.log(error);
@@ -56,6 +104,10 @@ const place_order = () => {
       );
     } finally {
       setloading(false);
+      setaddress("")
+      setcity("")
+      setpincode("")
+      setquantity(1 )
     }
   }
 
@@ -358,7 +410,7 @@ const place_order = () => {
                 type="submit"
                 className="w-full rounded-xl bg-blue-600 px-5 py-3.5 text-sm font-bold text-white shadow-sm transition-all duration-200 hover:bg-blue-700 hover:shadow-md active:scale-[0.99] sm:text-base"
               >
-                ✓ Confirm Order
+                ✓ Pay Now
               </button>
 
               <p className="mt-3 text-center text-xs text-slate-400">
