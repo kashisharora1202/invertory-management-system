@@ -80,7 +80,8 @@ const place_order = () => {
               })
               
             } catch (error) {
-              console.log(error.message)
+              console.log(error)
+              alert(error.response.error)
             }
         }
       };
@@ -98,8 +99,8 @@ const place_order = () => {
       console.log(error);
 
       alert(
+        error.response?.data?.error ||
         error.response?.data?.message ||
-          error.response?.data?.error ||
           "Something went wrong",
       );
     } finally {

@@ -20,8 +20,8 @@ async function order(req,res) {
             return res.status(201).json({message:"payment order created",payorder})
             
     } catch (error) {
-        res.status(500).json({message:"server not responce ", error:error.message})
         console.log(error.message)
+        res.status(500).json({message:"server not responce ", error:error.message})
     }
 }
 
