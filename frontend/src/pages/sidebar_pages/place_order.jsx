@@ -79,7 +79,7 @@ const place_order = () => {
                 withCredentials:true
               })
               
-            } catch (eror) {
+            } catch (error) {
               console.log(error.message)
             }
         }
